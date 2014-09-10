@@ -17,22 +17,26 @@ module Bittrex
       response = connection.get do |req|
         url = "#{HOST}/#{path}"
         req.params.merge!(params)
-        req.url(url)
-
+        
         if key
           req.params[:apikey]   = key
           req.params[:nonce]    = nonce
-          req.headers[:apisign] = signature(url, nonce)
+          req.headers[:apisign] = signature(url, nonce, req.params)
         end
+
+        req.url(url)
       end
 
+      ap response
+      ap response.body
+      
       JSON.parse(response.body)['result']
     end
 
     private
 
-    def signature(url, nonce)
-      OpenSSL::HMAC.hexdigest('sha512', secret, "#{url}?apikey=#{key}&nonce=#{nonce}")
+    def signature(url, nonce, params)
+      OpenSSL::HMAC.hexdigest('sha512', secret, "#{url}?#{params.to_query}")
     end
 
     def connection
