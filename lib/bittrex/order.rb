@@ -44,6 +44,10 @@ module Bittrex
     def self.history
       client.get('account/getorderhistory').map{|data| new(data) }
     end
+    
+    def self.order(uuid)
+      client.get('account/getorder', uuid: uuid))
+    end
 
     private
 
