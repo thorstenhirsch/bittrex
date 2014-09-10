@@ -27,7 +27,13 @@ module Bittrex
         req.url(url)
       end
       
-      JSON.parse(response.body)['result']
+      parsed_answer = JSON.parse(response.body)
+      
+      if parsed_answer['success'] 
+        parsed_answer['result']
+      else
+        parsed_answer['message']
+      end
     end
 
     private
