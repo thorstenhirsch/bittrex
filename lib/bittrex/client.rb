@@ -26,9 +26,6 @@ module Bittrex
 
         req.url(url)
       end
-
-      ap response
-      ap response.body
       
       JSON.parse(response.body)['result']
     end
