@@ -46,7 +46,7 @@ module Bittrex
     end
     
     def self.order(uuid)
-      client.get('account/getorder', uuid: uuid))
+      client.get('account/getorder', uuid: uuid)
     end
 
     private
