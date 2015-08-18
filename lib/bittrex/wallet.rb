@@ -17,8 +17,8 @@ module Bittrex
       client.get('account/getbalances').values.map{|data| new(data) }
     end
     
-    def self.get(currency)
-      client.get('account/getbalance/', currency: currency)
+    def self.balance(currency)
+      new(client.get('account/getbalance/', currency: currency))
     end
 
     private
