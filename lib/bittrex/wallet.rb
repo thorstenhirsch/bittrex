@@ -18,7 +18,7 @@ module Bittrex
     end
     
     def self.get(currency)
-      client.get("account/getbalance/#{currency}")
+      client.get('account/getbalance/', currency: currency)
     end
 
     private
