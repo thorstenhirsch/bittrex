@@ -1,0 +1,4 @@
+{
+  "buy": [{ "Quantity": 1, "Rate": 0.01607601 }, { "Quantity": 1.5, "Rate": 0.01607590 }],
+  "sell": [{ "Quantity": 1, "Rate": 0.01633299 }, { "Quantity": 1.5, "Rate": 0.01633301 }]
+}
